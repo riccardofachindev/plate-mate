@@ -1,30 +1,40 @@
 {
-  "name": "tauri-app",
+  "name": "plate-mate-monorepo",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "dev:host": "pnpm --filter host dev",
+    "dev:welcome": "pnpm --filter welcome dev",
+    "dev:auth": "pnpm --filter auth dev",
+    "dev:meals": "pnpm --filter meals dev",
+    "dev:backend": "pnpm --filter backend-api dev",
+    "dev:all": "concurrently -n host,welcome,auth,meals,api \"pnpm dev:host\" \"pnpm dev:welcome\" \"pnpm dev:auth\" \"pnpm dev:meals\" \"pnpm dev:backend\"",
+    "build:host": "pnpm --filter host build",
+    "build:welcome": "pnpm --filter welcome build",
+    "build:auth": "pnpm --filter auth build",
+    "build:meals": "pnpm --filter meals build",
+    "build:all": "pnpm build:host && pnpm build:welcome && pnpm build:auth && pnpm build:meals",
+    "tauri": "tauri",
+    "tauri:dev": "cd src-tauri && cargo tauri dev",
+    "tauri:build": "cd src-tauri && cargo tauri build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18",
-    "typescript": "~5.8.3",
-    "vite": "^7.0.4"
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "^3.2.4",
+    "typescript": "~5.8.3"
   }
 }
