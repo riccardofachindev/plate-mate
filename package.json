@@ -1,9 +1,11 @@
 {
-  "name": "plate-mate-monorepo",
+  "name": "plate-mate",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
     "dev:host": "pnpm --filter host dev",
     "dev:welcome": "pnpm --filter welcome dev",
     "dev:auth": "pnpm --filter auth dev",
@@ -25,9 +27,11 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "@tauri-apps/cli": "^2",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "@vitejs/plugin-react": "^5.1.2",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -35,6 +39,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "prettier": "^3.2.4",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.9.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18"
   }
 }
